@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CompteRendue index{% endblock %}
+
+{% block body %}
+    <h1>CompteRendue index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>File</th>
+                <th>Url</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compte_rendue in compte_rendues %}
+            <tr>
+                <td>{{ compte_rendue.id }}</td>
+                <td>{{ compte_rendue.description }}</td>
+                <td>{{ compte_rendue.file }}</td>
+                <td>{{ compte_rendue.url }}</td>
+                <td>
+                    <a href="{{ path('compte_rendue_show', {'id': compte_rendue.id}) }}">show</a>
+                    <a href="{{ path('compte_rendue_edit', {'id': compte_rendue.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('compte_rendue_new') }}">Create new</a>
+{% endblock %}

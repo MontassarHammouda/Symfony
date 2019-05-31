@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Exercice{% endblock %}
+
+{% block body %}
+    <h1>Exercice</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ exercice.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ exercice.titre }}</td>
+            </tr>
+            <tr>
+                <th>Urls</th>
+                <td>{{ exercice.Urls }}</td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td>{{ exercice.file }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('exercice_index') }}">back to list</a>
+
+    <a href="{{ path('exercice_edit', {'id': exercice.id}) }}">edit</a>
+
+    {{ include('exercice/_delete_form.html.twig') }}
+{% endblock %}

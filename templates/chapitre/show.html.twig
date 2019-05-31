@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chapitre{% endblock %}
+
+{% block body %}
+    <h1>Chapitre</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chapitre.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ chapitre.nom }}</td>
+            </tr>
+            <tr>
+                <th>Urls</th>
+                <td>{{ chapitre.Urls }}</td>
+            </tr>
+            <tr>
+                <th>File</th>
+                <td>{{ chapitre.file }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('chapitre_index') }}">back to list</a>
+
+    <a href="{{ path('chapitre_edit', {'id': chapitre.id}) }}">edit</a>
+
+    {{ include('chapitre/_delete_form.html.twig') }}
+{% endblock %}

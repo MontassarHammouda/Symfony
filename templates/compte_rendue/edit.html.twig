@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CompteRendue{% endblock %}
+
+{% block body %}
+    <h1>Edit CompteRendue</h1>
+
+    {{ include('compte_rendue/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('compte_rendue_index') }}">back to list</a>
+
+    {{ include('compte_rendue/_delete_form.html.twig') }}
+{% endblock %}

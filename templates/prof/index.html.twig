@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prof index{% endblock %}
+
+{% block body %}
+    <h1>Prof index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Numtel</th>
+                <th>Password</th>
+                <th>Username</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for prof in profs %}
+            <tr>
+                <td>{{ prof.id }}</td>
+                <td>{{ prof.Nom }}</td>
+                <td>{{ prof.Prenom }}</td>
+                <td>{{ prof.email }}</td>
+                <td>{{ prof.Numtel }}</td>
+                <td>{{ prof.password }}</td>
+                <td>{{ prof.Username }}</td>
+                <td>
+                    <a href="{{ path('prof_show', {'id': prof.id}) }}">show</a>
+                    <a href="{{ path('prof_edit', {'id': prof.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('prof_new') }}">Create new</a>
+{% endblock %}

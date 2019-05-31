@@ -1,0 +1,36 @@
+version: "3.1"
+services:
+    mysql:
+        image: mysql:5.7
+        container_name: Gldra-mysql
+        working_dir: /application
+        volumes:
+            - .:/application
+            - ./Db:/var/lib/mysql
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=password
+            - MYSQL_DATABASE=Gldra
+            - MYSQL_USER=user
+            - MYSQL_PASSWORD=password
+        ports: 
+            - 3306:3306
+
+    webserver:
+        image: nginx:alpine
+        container_name: Gldra-webserver
+        working_dir: /application
+        volumes:
+            - .:/applications
+
+            - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+             - 80:80
+
+    php-fpm:
+        build: docker/php-fpm
+        container_name: Gldra-php-fpm
+        working_dir: /application
+        volumes:
+            - .:/application
+            - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
